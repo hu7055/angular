@@ -1,0 +1,13 @@
+<p>
+  video-list works!
+</p>
+
+<p *ngFor="let item of videoList">
+  <a href='videos/{{item.slug}}'>{{item.name}}</a>
+
+  <iframe width="200" height="200" [src]="getEmbedUrl(item)" frameborder="0" gesture="media" allowfullscreen></iframe>
+  
+
+
+</p>
+
