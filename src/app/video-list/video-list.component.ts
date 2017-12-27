@@ -1,48 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+
+import { VideoItem } from '../videos/video';
+import { VideosService } from '../videos/videos.service';
 
 @Component({
   selector: 'video-list',
   templateUrl: './video-list.component.html',
-  styleUrls: ['./video-list.component.css']
+  styleUrls: ['./video-list.component.css'],
+  providers: [VideosService]
 })
-export class VideoListComponent implements OnInit {
+export class VideoListComponent implements OnInit, OnDestroy {
+  title : String = "Video List";
+  todayDate;
+  private req: any;
+  @Input() videoList: [VideoItem];
+  @Input() callBySearch: boolean;
 
-  constructor(private sanitizer : DomSanitizer) { }
-
-  //videoList = ["item 1","item 2","item 3"];
-
-videoList=[
-  {
-    name : "item 1",
-    slug : "item -1",
-    embed : "cxcxskPKtiI"
-  },
-  {
-    name : "item 2",
-    slug : "item -2",
-    embed : "cxcxskPKtiI"
-  },
-  {
-    name : "item 3",
-    slug : "item -3",
-    embed : "cxcxskPKtiI"
-  },
-  {
-    name : "item 4",
-    slug : "item -4",
-    embed : "cxcxskPKtiI"
-  }
-];
+  constructor( private video : VideosService) { }
 
   ngOnInit() {
-   
+    this.todayDate = new Date();
+    if(!this.callBySearch){
+    this.req = this.video.list().subscribe(data =>{
+      console.log(data);
+      this.videoList = data as [VideoItem];
+    });
+    }
+  }
+
+  ngOnDestroy(){
+    if(!this.callBySearch){
+      this.req.unsubscribe();
+    }
   }
   
-  getEmbedUrl(item){
-    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + item.embed + '?ecver=1');
-    //return 'https://www.youtube.com/embed/' + item.embed + '?ecver=1';
-  }
+
 
 
 

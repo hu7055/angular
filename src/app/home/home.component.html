@@ -1,0 +1,62 @@
+<carousel *ngIf="homeImageList">
+  <slide>
+      <a routerLink='/videos/' routerLinkActive="active">
+        <img class="img-main-carousel" [src]="videoListDefaultImage" alt="First slide" style="display: block; width: 100%;">
+      </a>
+      <div class="carousel-caption">
+        <h3>Video List</h3>
+        <p><a class="btn btn-primary" routerLink="/videos/" routerLinkActive>Videos</a></p>
+      </div>
+  </slide>
+  <slide *ngFor="let image of homeImageList">
+    <a href="{{image.slug}}" (click)="preventNormal($event, image)">
+      <img class="img-main-carousel" src="{{image.image}}" alt="First slide" style="display: block; width: 100%;">
+    </a>
+    <div class="carousel-caption">
+      <h3>{{image.name}}</h3>
+      <!-- <p><a class="btn btn-default" href="/videos/video-1">Video 1</a></p> -->
+    </div>
+  </slide>
+</carousel>
+
+<div class="accordion-container">
+  <accordion>
+    <ng-container *ngFor="let image of homeImageList">
+        <accordion-group #group>
+            <div accordion-heading class="clearfix">
+              <i class="glyphicon float-right pull-right" [ngClass]="{'glyphicon-menu-up' : !group.isOpen, 'glyphicon-menu-down' : group.isOpen}" ></i>
+              {{image.slug}}
+            </div>
+            {{image.slug}}
+        </accordion-group>
+    </ng-container>
+  </accordion>
+</div>
+
+<div class="accordion-container">
+  <accordion>
+    <accordion-group heading="Static Header, initially expanded" #group>
+      This content is straight in the template.
+    </accordion-group>
+    <accordion-group #group>
+      <div accordion-heading class="clearfix">
+        I can have markup, too!
+        <span class="badge badge-secondary float-right pull-right">Some HTML here</span>
+      </div>
+      This is just some content to illustrate fancy headings.
+    </accordion-group>
+    <accordion-group heading="Group with isOpenChange event listener" (isOpenChange)="log($event)">
+      <p>Some content</p>
+    </accordion-group>
+    <accordion-group heading="Another group" #group>
+      <p>Some content</p>
+    </accordion-group>
+    <accordion-group #group>
+        <div accordion-heading class="clearfix">
+          I can have markup, too!
+            <i class="glyphicon float-right pull-right" [ngClass]="{'glyphicon-menu-up' : !group.isOpen, 'glyphicon-menu-down' : group.isOpen}" ></i>
+        </div>
+        This is just some content to illustrate fancy headings.
+      </accordion-group>
+  </accordion>
+</div>

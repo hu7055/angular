@@ -1,0 +1,49 @@
+[{
+    "name" : "Welcome",
+    "slug" : "Welcome",
+    "embed" : "cxcxskPKtiI",
+    "image" : "assets/images/nature/4.jpg",
+    "featured" : true
+},
+{
+    "name" : "video 2",
+    "slug" : "video-2",
+    "embed" : false,
+    "image" : "assets/images/nature/5.jpg",
+    "featured" : true
+},
+{
+    "name" : "video 3",
+    "slug" : "video-3",
+    "embed" : "cxcxskPKtiI",
+    "image" : "assets/images/nature/6.jpg",
+    "featured" : true
+},
+{
+    "name" : "video 4",
+    "slug" : "video-4",
+    "embed" : false,
+    "image" : "assets/images/nature/5.jpg",
+    "featured" : true
+},
+{
+    "name" : "video 5",
+    "slug" : "video-5",
+    "embed" : "cxcxskPKtiI",
+    "image" : "assets/images/nature/6.jpg",
+    "featured" : true
+},
+{
+    "name" : "video 6",
+    "slug" : "video-6",
+    "embed" : false,
+    "image" : "assets/images/nature/5.jpg",
+    "featured" : true
+},
+{
+    "name" : "video 7",
+    "slug" : "video-7",
+    "embed" : "cxcxskPKtiI",
+    "image" : "assets/images/nature/6.jpg",
+    "featured" : true
+}]

@@ -1,0 +1,15 @@
+<!-- <search class='text-center search-inline' [passedQuery]='query'></search> -->
+<p *ngIf='query'>
+  Searched for <b>{{ query }}</b>
+</p>
+
+
+<!-- <ng-container *ngFor="let item of videoList">
+  <a href='videos/{{item.slug}}'><h1>{{item.name}}</h1></a>
+  <div style="position:relative;height:0;padding-bottom:56.25%" >
+     <iframe width="200" height="200" [src]="getEmbedUrl(item) | safe" frameborder="0" gesture="media" allowfullscreen></iframe>
+  </div>
+ </ng-container> -->
+<div *ngIf="videoList">
+  <video-list [videoList]='videoList' [callBySearch]='true'></video-list>
+</div>

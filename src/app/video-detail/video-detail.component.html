@@ -1,3 +1,16 @@
-<p>
-  {{slug}}!!
-</p>
+
+<div *ngIf="!video">Loading</div>
+<div *ngIf="video">
+  <h1>{{video.name}}</h1>
+  <p>
+      <a routerLink='videos/{{video.slug}}' routerLinkActive="active">
+        <h1>{{video.slug}}</h1>
+      </a>
+  </p>
+  <div style="position:relative;height:0;padding-bottom:56.25%" *ngIf="video.embed">
+        <iframe width="200" height="200" [src]="getEmbedUrl(video) | safe" frameborder="0" gesture="media" allowfullscreen></iframe>
+  </div>
+  <div class="text-center" *ngIf='video.image && !video.embed'>
+    <img class='image-responsive image-center' [src]='video.image' alt="{{ video.name }} image" width="90%"/> 
+  </div>
+</div>
